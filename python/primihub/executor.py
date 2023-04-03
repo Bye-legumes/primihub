@@ -15,7 +15,7 @@
  """
 import traceback
 from cloudpickle import loads
-from primihub.context import Context
+from primihub.new_context import Context
 from primihub.utils.logger_util import logger
 
 class Executor:
@@ -27,20 +27,7 @@ class Executor:
         pass
 
     @staticmethod
-    def execute_py(dumps_func):
-        logger.info("execute py code.")
-        func_name = loads(dumps_func).__name__
-        logger.debug("func name: {}".format(func_name))
-        func = loads(dumps_func)
-
-        try:
-            logger.debug("start execute with params")
-            func(Context)
-            logger.debug("end start execute with params")
-        except Exception as e:
-            logger.error("Exception: ", str(e))
-            traceback.print_exc()
-            raise e
-        finally:
-            # Context.clean_content()
-            pass
+    def execute_py():
+        print(Context.params)
+        print(Context.func)
+        print(Context.role)

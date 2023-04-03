@@ -11,22 +11,25 @@ class ContextAll:
     '''
     All the parameter is included in this context.
     '''
-    def __init__(self, task_config=dict(), node_config=dict(), task_parameter=dict()) -> None:
-        self.task_config = task_config
-        self.node_config = node_config
-        self.task_parameter = task_parameter
+    def __init__(self, func, params, role) -> None:
+        self.func = func
+        self.params = params
+        self.role = role
 
 Context = ContextAll()
 
-def set_task_config(key, val):
-    Context.task_config[key] = val
+def set_task_param(params):
+    Context.params = params
+
+def set_task_code(func):
+    Context.func = func
+
+def set_role(role):
+    Context.role = role
 
 
-def set_node_config(key, val):
-    Context.node_config[key] = val
 
-def set_task_parameter(key, val):
-    Context.task_parameter[key] = val
+
 
 
 
